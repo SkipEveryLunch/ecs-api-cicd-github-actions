@@ -13,6 +13,6 @@ jobs:
     steps:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/github-actions-codepipeline
-          aws-region: ${var.default_region}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
       - run: aws codepipeline start-pipeline-execution --name ecs-api-cicd-pipeline 
