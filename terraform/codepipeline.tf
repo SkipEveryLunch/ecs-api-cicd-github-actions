@@ -128,6 +128,7 @@ resource "aws_codepipeline" "pipeline" {
         ConnectionArn    = aws_codestarconnections_connection.github.arn
         FullRepositoryId = var.github_repository_id
         BranchName       = var.github_target_branch
+        DetectChanges    = "false" # github_target_branch へのマージで自動的にデプロイされないように
       }
     }
   }
